@@ -12,25 +12,25 @@ minimum
     Should Be Equal As Integers    3    ${min}
 
 *** Keywords ***
-średnia
-    [Arguments]    @{wartości}
-    ${suma}    Evaluate    0
-    :FOR    ${wartość}    IN    @{wartości}
-    \    ${suma}    Evaluate    ${suma} + ${wartość}
-    ${ilość}    Get Length    ${wartości}
-    ${wynik}    Evaluate    ${suma} / ${ilość}
-    [Return]    ${wynik}
-
 max
     [Arguments]    @{liczby}
     ${max}    Evaluate    ${liczby}[0]
-    :FOR    ${liczba}    IN    @{liczby}
+    : FOR    ${liczba}    IN    @{liczby}
     \    ${max}    Set Variable If    ${liczba}>${max}    ${liczba}    ${max}
     [Return]    ${max}
 
 min
     [Arguments]    @{liczby}
     ${min}    Evaluate    ${liczby}[0]
-    :FOR    ${liczba}    IN    @{liczby}
+    : FOR    ${liczba}    IN    @{liczby}
     \    ${min}    Set Variable If    ${liczba}<${min}    ${liczba}    ${min}
     [Return]    ${min}
+
+średnia
+    [Arguments]    @{wartości}
+    ${suma}    Evaluate    0
+    : FOR    ${wartość}    IN    @{wartości}
+    \    ${suma}    Evaluate    ${suma} + ${wartość}
+    ${ilość}    Get Length    ${wartości}
+    ${wynik}    Evaluate    ${suma} / ${ilość}
+    [Return]    ${wynik}
